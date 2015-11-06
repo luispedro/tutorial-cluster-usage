@@ -70,16 +70,16 @@ Run same script with a different index passed in an environmental variable.
 
 Scheduling a job array
 
-    qsub -t 1-10 script.sh # GE
+    qsub -t 1-100 script.sh # GE
     bsub -J "myjob[1-100]" script.sh # LSF
 
 Looking up the task ID:
 
-    echo $TASK_ID # GE
+    echo $SGE_TASK_ID # GE
     echo $LSB_JOB_INDEX # LSF
 
 A little one liner to get a line from a file
 
-    sed -n "${TASK_ID}p" file-list.txt         # GE
+    sed -n "${SGE_TASK_ID}p" file-list.txt         # GE
     sed -n "${LSB_JOB_INDEX}p" file-list.txt   # LSF
 
